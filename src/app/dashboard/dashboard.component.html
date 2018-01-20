@@ -1,8 +1,11 @@
 <h3>Top Heroes</h3>
-<div>
-  <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
-    </div>
-  </a>
+<div id="carousel">
+  <figure id="spinner" [ngStyle]="currentStyles">
+    <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+      <!--<h4>{{hero.name}}</h4>-->
+      <img height="380" class="dashboard-img" src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}">
+    </a>
+  </figure>
 </div>
+<span style="float:left" class="ss-icon" (click)="gallerySpin('-')">&lt;</span>
+<span style="float:right" class="ss-icon" (click)="gallerySpin('')">&gt;</span>
