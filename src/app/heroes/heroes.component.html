@@ -1,9 +1,16 @@
-<h2>Mock Heroes (Eventually Marvels') </h2>
+<h2>Marvel Heroes List </h2>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
+<div class="row">
+  <div *ngFor="let hero of heroes" class="card col-xs-12 col-sm-6 col-lg-4 col-xl-3 bg-black">
     <a routerLink="/detail/{{hero.id}}">
-      <span> {{hero.id}} </span> {{hero.name}}
+      <img height="260px" class="card-img-top rounded-0" src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}">
     </a>
-  </li>
-</ul>
+    <div class="card-body">
+      <a class="card-link" routerLink="/detail/{{hero.id}}">
+        Name: {{hero.name}}
+        <br />
+        ID: {{hero.id}}
+      </a>
+    </div>
+  </div>
+</div>

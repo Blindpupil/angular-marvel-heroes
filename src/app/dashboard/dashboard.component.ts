@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,6 +10,7 @@ import { HeroService } from '../hero.service';
 
 export class DashboardComponent implements OnInit {
   @Input() heroes: Hero[];
+  currentHero: Hero;
   currentStyles: {};
   angle = 0;
 
@@ -18,6 +18,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => {
+        this.heroes = heroes['data']['results'].slice(1, 9);
+      });
   }
 
   gallerySpin(sign: string): void {
@@ -29,10 +36,7 @@ export class DashboardComponent implements OnInit {
     };
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => {
-        this.heroes = heroes['data']['results'].slice(1, 9);
-      });
+  showInfo(hero): void {
+    this.currentHero = hero;
   }
 }

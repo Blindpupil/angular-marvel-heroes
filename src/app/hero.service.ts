@@ -11,10 +11,15 @@ import { MessageService } from './message.service';
 
 @Injectable()
 export class HeroService {
-  // URL to web api
-  private heroesUrl = 'https://gateway.marvel.com:443/v1/public/characters?limit=10&apikey=2613d3beb415606554f219d832a23901';
-  private heroUrl = 'https://gateway.marvel.com:443/v1/public/characters/';
+  // URL to web api.
+
+  private limit = 'limit=12';
+
+  // For an app designed for production the key would be hidden behind an ENV variable.
   private key = 'apikey=2613d3beb415606554f219d832a23901';
+
+  private heroesUrl = `https://gateway.marvel.com:443/v1/public/characters?${this.limit}&${this.key}`;
+  private heroUrl = 'https://gateway.marvel.com:443/v1/public/characters/';
 
   constructor(
     private http: HttpClient,
@@ -51,7 +56,7 @@ export class HeroService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
+      // TODO: Transforming error for human consumption
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.

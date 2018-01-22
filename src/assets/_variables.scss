@@ -1,3 +1,6 @@
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -62,11 +65,11 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$primary:       $blue !default;
+$primary:       $gray-200;
 $secondary:     $gray-600 !default;
-$success:       $green !default;
+$success:       $orange !default;
 $info:          $cyan !default;
-$warning:       $yellow !default;
+$warning:       $teal !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
@@ -140,16 +143,16 @@ $sizes: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-bg:                   $black;
+$body-color:                $gray-100;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                theme-color("primary") !default;
+$link-color:                $secondary;
 $link-decoration:           none !default;
-$link-hover-color:          darken($link-color, 15%) !default;
+$link-hover-color:          darken($link-color, 15%);
 $link-hover-decoration:     underline !default;
 
 // Paragraphs
