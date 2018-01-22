@@ -1,5 +1,26 @@
-<div *ngIf="hero">
+<div *ngIf="hero" class="mb-2">
   <h3>Details for {{hero.name | uppercase}}</h3>
-  <div>id: {{hero.id}}</div>
-  <div>name: {{hero.name}}</div>
+  <p>id: {{hero.id}}</p>
+
+  <h4>Description</h4>
+  <p>{{hero.description}}</p>
+
+  <p>More info:
+    <a class="text-white" href="{{hero.resourceURI}}">here.</a>
+  </p>
+
+  <h4>Resources</h4>
+  <p>
+    Comics: {{hero.comics.available}} <br />
+    Series: {{hero.series.available}} <br />
+    Stories: {{hero.stories.available}} <br />
+    Events: {{hero.events.available}}
+  </p>
+
+  <h4>Sources</h4>
+  <a *ngFor="let urls of hero.urls" class="btn btn-outline-dark mr-2" href="{{urls.url}}">
+    {{urls.type}}
+  </a>
 </div>
+
+<button class="btn btn-light btn-sm my-4" (click)="goBack()">Back</button>

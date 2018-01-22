@@ -1,0 +1,32 @@
+<h3>Top Heroes</h3>
+
+<div class="row py-4 align-items-center">
+
+  <div class="col-1 arrow">
+    <span class="float-left" (click)="gallerySpin('-')">&lt;</span>
+  </div>
+
+  <div class="col-10" id="carousel">
+    <figure id="spinner" [ngStyle]="currentStyles">
+      <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+        <!--<h4>{{hero.name}}</h4>-->
+        <img class="dashboard-img" (mouseenter)="showInfo(hero)" src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" alt="{{hero.name}}">
+      </a>
+    </figure>
+  </div>
+
+  <div class="col-1 arrow">
+    <span class="float-right" (click)="gallerySpin('')">&gt;</span>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row dash-info" *ngIf="currentHero">
+    <p class="d-block">
+      Identity: {{currentHero.name}}
+      <br />
+      Description: {{currentHero.description? currentHero.description : "No data available" }}
+    </p>
+  </div>
+</div>
