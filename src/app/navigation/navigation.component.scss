@@ -1,0 +1,9 @@
+@import "../../assets/custom";
+
+a {
+  color: $link-color;
+  transition: 0.4s color;
+  &:hover {
+    color: $primary;
+  }
+}
